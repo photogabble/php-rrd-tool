@@ -2,6 +2,7 @@
 <p align="center"><em>Ease the creation and updating of rrdtools files</em></p>
 
 <p align="center">
+  <a href="https://packagist.org/packages/photogabble/php-rrd-tool"><img src="https://img.shields.io/packagist/v/photogabble/php-rrd-tool.svg" alt="Latest Stable Version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/photogabble/php-confusable-homoglyphs.svg" alt="License"></a>
 </p>
 
