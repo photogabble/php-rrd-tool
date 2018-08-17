@@ -46,7 +46,7 @@ class DataSource
     {
         $dst = strtoupper($dst);
 
-        if (!in_array($dst, ['GAUGE', 'COUNTER', 'DERIVE', 'ABSOLUTE'])) {
+        if (!in_array($dst, ['GAUGE', 'COUNTER', 'DCOUNTER', 'DERIVE', 'ABSOLUTE', 'COMPUTE'])) {
             throw new Exception(sprintf('The DST [%s] is invalid', $dst));
         }
 
