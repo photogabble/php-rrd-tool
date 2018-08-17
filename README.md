@@ -23,7 +23,7 @@ Please see the [tests](https://github.com/photogabble/php-rrd-tool/tree/master/t
 
 ## Todo
 
-* [ ] Add class representation of [rrdupdate](https://oss.oetiker.ch/rrdtool/doc/rrdupdate.en.html)
+* [x] Add class representation of [rrdupdate](https://oss.oetiker.ch/rrdtool/doc/rrdupdate.en.html)
 * [ ] Add class representation of [rrddump](https://oss.oetiker.ch/rrdtool/doc/rrddump.en.html)
 * [ ] Add class representation of [rrdfetch](https://oss.oetiker.ch/rrdtool/doc/rrdfetch.en.html)
 * [ ] Add class representation of [rrdfirst](https://oss.oetiker.ch/rrdtool/doc/rrdfirst.en.html)

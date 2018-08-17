@@ -11,7 +11,7 @@ use Photogabble\RRDTool\Graph\RoundRobbinArchive;
  *
  * @see https://oss.oetiker.ch/rrdtool/doc/rrdcreate.en.html
  */
-class RRDCreate
+class RRDCreate extends RRDBase
 {
     const SECOND = 1;
     const MINUTE = self::SECOND * 60;
@@ -19,11 +19,6 @@ class RRDCreate
     const DAY = self::HOUR * 24;
     const WEEK = self::DAY * 7;
     const YEAR = self::DAY * 365;
-
-    /**
-     * @var string
-     */
-    private $filename;
 
     /**
      * Start Time
@@ -71,10 +66,7 @@ class RRDCreate
      */
     public function __construct(string $filename, int $step, int $start = null)
     {
-        if (strpos($filename, '.rrd') === false) {
-            $filename.='.rrd';
-        }
-        $this->filename = $filename;
+        parent::__construct($filename);
         $this->step = $step;
         $this->start = (is_null($start) ? time() - 10 : $start);
     }

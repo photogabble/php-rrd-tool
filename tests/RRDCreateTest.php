@@ -7,7 +7,7 @@ use Photogabble\RRDTool\Graph\DataSource;
 use Photogabble\RRDTool\Graph\RoundRobbinArchive;
 use PHPUnit\Framework\TestCase;
 
-class GraphTest extends TestCase
+class RRDCreateTest extends TestCase
 {
     public function testGraph()
     {
