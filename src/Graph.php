@@ -9,9 +9,7 @@ use Photogabble\RRDTool\Graph\RoundRobbinArchive;
 /**
  * Class Graph
  *
- * Class version of rrdcreate
- *
- * @package Photogabble\RRDTool
+ * @see https://oss.oetiker.ch/rrdtool/doc/rrdcreate.en.html
  */
 class Graph
 {
@@ -28,6 +26,28 @@ class Graph
     private $name;
 
     /**
+     * Start Time
+     *
+     * Specifies the time in seconds since 1970-01-01 UTC when the first
+     * value should be added to the RRD. RRDtool will not accept
+     * any data timed before or at the time specified.
+     *
+     * Currently this only supports it being a unix
+     * timestamp, while RRDtool does actually
+     * support AT-STYLE time specification.
+     *
+     * References --start|-b option on rrdcreate
+     *
+     * @var int
+     */
+    private $start;
+
+    /**
+     * Specifies the base interval in seconds with which data will be fed
+     * into the RRD. A scaling factor may be present
+     * as a suffix to the integer.
+     *
+     * @see https://oss.oetiker.ch/rrdtool/doc/rrdcreate.en.html#STEP__HEARTBEAT__and_Rows_As_Durations
      * @var int
      */
     private $step;
@@ -41,13 +61,6 @@ class Graph
      * @var RoundRobbinArchive[]
      */
     private $rra = [];
-
-    /**
-     * Start Time
-     *
-     * @var int
-     */
-    private $start;
 
     /**
      * RDDGraph constructor.

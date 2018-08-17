@@ -35,3 +35,4 @@ Please see the [tests](https://github.com/photogabble/php-rrd-tool/tree/master/t
 * [ ] Add class representation of [rrdrestore](https://oss.oetiker.ch/rrdtool/doc/rrdrestore.en.html)
 * [ ] Add class representation of [rrdtune](https://oss.oetiker.ch/rrdtool/doc/rrdtune.en.html)
 * [ ] Add class representation of [rrdxport](https://oss.oetiker.ch/rrdtool/doc/rrdxport.en.html)
+* [ ] Add missing specialized functions `HWPREDICT`, `MHWPREDICT`, etc
