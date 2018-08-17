@@ -2,7 +2,7 @@
 
 namespace Photogabble\ConfusableHomoglyphs\Tests;
 
-use Photogabble\RRDTool\Graph;
+use Photogabble\RRDTool\RRDCreate;
 use Photogabble\RRDTool\Graph\DataSource;
 use Photogabble\RRDTool\Graph\RoundRobbinArchive;
 use PHPUnit\Framework\TestCase;
@@ -13,10 +13,10 @@ class GraphTest extends TestCase
     {
         try {
             $now = time();
-            $graph = new Graph('test', 300, $now);
+            $graph = new RRDCreate('test', 300, $now);
 
             $this->assertEquals([
-                'name' => 'test',
+                'name' => 'test.rrd',
                 'step' => 300,
                 'start' => $now,
                 'ds' => [],
@@ -30,16 +30,16 @@ class GraphTest extends TestCase
             $graph->addDataSource('inet_down_other', DataSource::DERIVE, 600, 0);
 
             // Day in 5 minute resolution
-            $graph->addRoundRobbinArchive(RoundRobbinArchive::AVERAGE, GRAPH::MINUTE * 5, GRAPH::DAY);
+            $graph->addRoundRobbinArchive(RoundRobbinArchive::AVERAGE, RRDCreate::MINUTE * 5, RRDCreate::DAY);
 
             // Week in 15 minute resolution
-            $graph->addRoundRobbinArchive(RoundRobbinArchive::AVERAGE, GRAPH::MINUTE * 15, GRAPH::WEEK);
+            $graph->addRoundRobbinArchive(RoundRobbinArchive::AVERAGE, RRDCreate::MINUTE * 15, RRDCreate::WEEK);
 
             // Month (give or take) in 1 hour resolution
-            $graph->addRoundRobbinArchive(RoundRobbinArchive::AVERAGE, GRAPH::HOUR, GRAPH::DAY * 31);
+            $graph->addRoundRobbinArchive(RoundRobbinArchive::AVERAGE, RRDCreate::HOUR, RRDCreate::DAY * 31);
 
             // Year in 6 hour resolution
-            $graph->addRoundRobbinArchive(RoundRobbinArchive::AVERAGE, GRAPH::HOUR * 6, GRAPH::YEAR);
+            $graph->addRoundRobbinArchive(RoundRobbinArchive::AVERAGE, RRDCreate::HOUR * 6, RRDCreate::YEAR);
 
             $expected = 'rrdtool create test.rrd ' .
                 '--step 300 ' .

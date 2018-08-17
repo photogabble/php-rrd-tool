@@ -11,7 +11,7 @@ use Photogabble\RRDTool\Graph\RoundRobbinArchive;
  *
  * @see https://oss.oetiker.ch/rrdtool/doc/rrdcreate.en.html
  */
-class Graph
+class RRDCreate
 {
     const SECOND = 1;
     const MINUTE = self::SECOND * 60;
@@ -23,7 +23,7 @@ class Graph
     /**
      * @var string
      */
-    private $name;
+    private $filename;
 
     /**
      * Start Time
@@ -65,13 +65,16 @@ class Graph
     /**
      * RDDGraph constructor.
      *
-     * @param string $name
+     * @param string $filename
      * @param int $step
      * @param int $start
      */
-    public function __construct(string $name, int $step, int $start = null)
+    public function __construct(string $filename, int $step, int $start = null)
     {
-        $this->name = $name;
+        if (strpos($filename, '.rrd') === false) {
+            $filename.='.rrd';
+        }
+        $this->filename = $filename;
         $this->step = $step;
         $this->start = (is_null($start) ? time() - 10 : $start);
     }
@@ -144,7 +147,7 @@ class Graph
     {
         $rows = [
             'rrdtool',
-            sprintf('create %s.rrd', $this->name),
+            sprintf('create %s', $this->filename),
             sprintf('--step %d', $this->step),
             sprintf('--start %d', $this->start)
         ];
@@ -161,7 +164,7 @@ class Graph
     public function toArray()
     {
         return [
-            'name' => $this->name,
+            'name' => $this->filename,
             'step' => $this->step,
             'start' => $this->start,
             'ds' => $this->ds,
