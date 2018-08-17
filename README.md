@@ -1,4 +1,4 @@
-<h1 align="center">PHP RDDTool Helpers</h1>
+<h1 align="center">PHP RRDTool Helpers</h1>
 <p align="center"><em>Ease the creation and updating of rrdtools files</em></p>
 
 <p align="center">
